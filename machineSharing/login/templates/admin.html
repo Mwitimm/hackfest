@@ -1,0 +1,125 @@
+{% extends 'admin_base.html'  %}
+{% load static %}
+
+{% block content %}
+<!-- partial -->
+<div class="main-panel">
+    <div class="container">
+        <br/>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Admin Panel
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% if account1.admin == 0 %}
+        <div class="row">
+            <div class="col-md-12 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                    <div class="card-body">
+                        <img src="{% static 'Login/stylesheets/assets/images/dashboard/circle.svg' %}"
+                             class="card-img-absolute" alt="circle-image"/>
+                        <h4 class="font-weight-normal mb-3">You are not allowed to view this page! <i
+                                class="mdi mdi-block-helper mdi-24px float-right"></i></h4>
+
+                        <h2 class="mb-5">RESTRICTED PAGE</h2>
+                        <h6 class="card-text">Only admins are allowed here!</h6>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © FamilyBank.com 2023</span>
+                </div>
+            </footer>
+        </div>
+
+        {% else %}
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Current users</h4>
+                    {% if account %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th> Username</th>
+                                <th> Account status</th>
+                                <th> Turn</th>
+                                <th> Last Log</th>
+                                <th> Action</th>
+                            </tr>
+                            </thead>
+                            {% for acc in account %}
+
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <img src="{% static 'Login/assets/default-user.png' %}" class="me-2" alt="image">
+                                    {{acc.name}}
+                                </td>
+                                {% if acc.status == 1 %}
+                                <td>
+                                    <label class="badge badge-gradient-success">Approved</label>
+                                </td>
+                                {% else %}
+                                <td>
+                                    <label class="badge badge-gradient-danger">Not Approved</label>
+                                </td>
+                                {% endif %}
+                                <td> {{ turn.number }}</td>
+
+                                <td> {{ logs1.timestamp }}</td>
+                                <td><a href="{% url 'edit_user' acc.name %}" class="btn btn-info">Edit user</a></td>
+                            </tr>
+
+                            </tbody>
+                            {% endfor %}
+                            {% else %}
+                            <h3>No users found!</h3>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © FamilyBank.com 2023</span>
+                </div>
+            </footer>
+    </div>
+
+    {% endif %}
+    <!-- partial -->
+</div>
+</div>
+
+{% endblock %}
+
+

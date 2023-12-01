@@ -1,0 +1,44 @@
+{% extends 'admin_base.html'  %}
+{% load static %}
+
+{% block content %}
+<div class="main-panel">
+    <div class="container">
+        <br/>
+        <h6>Monthly contributions. </h6>
+    </div>
+
+    <hr>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3 row">
+            <div class="col-sm-10">
+                {{ form.as_p }}
+            </div>
+        </div>
+
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-info mb-3">update</button>
+        </div>
+    </form>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            This month Paid users
+        </div>
+
+        <ul class="list-group list-group-flush">
+            {% if contribute %}
+            {% for con in contribute %}
+            <li class="list-group-item">{{ con.member }}</li>
+
+            {% endfor %}
+            {% else %}
+            <h5>No members paid this month.</h5>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+</div>
+
+{% endblock %}

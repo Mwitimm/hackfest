@@ -1,0 +1,83 @@
+{% extends 'base1.html'  %}
+{% load static %}
+
+{% block content %}
+<div class="main-panel">
+      <div class="container">
+    <br/>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+  </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <i class="mdi mdi-cash"></i>
+    </span> Transactions
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if apply %}
+            {% for records in apply %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th> <!-- Use forloop.counter for the index -->
+                <td>{{ records.date_applied }}</td>
+                {% if records.type == 0 %}
+                <td>Loan applications</td>
+                {%else%}
+                <td>Loan Repayment</td>
+                {% endif %}
+                <td>{{ records.amount }}</td>
+                <td>
+                    {% if records.status == 'pending' %}
+                    <span class="badge badge-primary">{{ records.status }}</span>
+                    {% elif records.status == 'approved' %}
+                    <span class="badge badge-success">{{ records.status }}</span>
+                    {% elif records.status == 'rejected' %}
+                    <span class="badge badge-danger">{{ records.status }}</span>
+                    {% else %}
+                    <span class="badge badge-secondary">{{ records.status }}</span>
+                    {% endif %}
+                </td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <p class="h3">No transactions found!</p>
+
+            {% endif %}
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{%endblock %}

@@ -1,0 +1,47 @@
+{% extends 'admin_base.html'  %}
+{% load static %}
+
+{% block content %}
+<h6>Edit user. </h6>
+<hr>
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="mb-3 row">
+        <label for="staticUsername" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticUsername" value="{{ acc.name }}"
+                   name="username">
+        </div>
+
+        <div class="mb-3 row">
+            <label for="staticLastLog" class="col-sm-2 col-form-label">Lastlog</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticLastLog" value="{{ logs1.timestamp }}"
+                       name="log">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="turn" class="col-sm-2 col-form-label">Turn</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="turn" name="turn">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="status" class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-10">
+                <select class="form-select" id="status" name="status">
+                    <option value="verify">Verify</option>
+                    <option value="reject">Reject</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Edit user</button>
+    </div>
+
+
+</form>
+
+{% endblock %}

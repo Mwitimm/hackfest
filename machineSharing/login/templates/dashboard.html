@@ -1,0 +1,171 @@
+{% extends 'base1.html'  %}
+{% load static %}
+
+{% block content %}
+<!-- partial -->
+<div class="main-panel">
+    <div class="container">
+        <br/>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Dashboard
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="row">
+            <div style="height:100%;width:100%;display:flex;justify-content:right;">
+                <p class="h3" style="justify-content: left;margin-right: 650px;">My Equipments</p>
+                <button type="button" class="btn btn-success " style="border-radius:50%" data-bs-toggle="modal"
+                        data-bs-target="#addMachinery">+
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addMachinery" data-bs-backdrop="static" data-bs-keyboard="false"
+                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Machine</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="" class="row g-3" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="col-md-6">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Type</label>
+                                        <input class="form-control" list="datalistOptions" id="exampleDataList"
+                                               placeholder="Type to search..." name="type">
+                                        <datalist id="datalistOptions">
+                                            <option value="Tractor">
+                                            <option value="Harvester">
+                                            <option value="Panga">
+                                            <option value="Chuff cutter">
+                                            <option value="Others">
+                                        </datalist>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="Location" name="location">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Rental Rates</label>
+                                        <input type="text" class="form-control" id="inputAddress2" placeholder="eg 1000"
+                                               name="rates">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Description</label>
+                                        <input type="text" class="form-control" id="inputAddress3" placeholder="eg 1000"
+                                               name="desc">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Condition</label>
+                                        <select class="form-select" aria-label="Default select example"
+                                                name="condition">
+                                            <option value="used">Used</option>
+                                            <option value="new">New</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="formFile" class="form-label">Upload Image</label>
+                                        <input class="form-control" type="file" id="formFile" name="img">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-success btn-sm" data-bs-dismiss="modal">
+                                            Add
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {% if equipments %}
+            {% for eq in equipments %}
+            <div class="col-md-4 stretch-card grid-margin">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ eq.img.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ eq.name }}</h5>
+                        <p class="card-text">{{ eq.Desc }}</p>
+                        
+                        {% if eq.available %}
+                        <a href="{% url 'delete' eq.id %}" class="btn btn-danger">remove</a>
+                        {% else %}
+                        <p class="h4">This Equipments is not available</p><span class="badge text-bg-danger">Equipment not available</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else%}
+            <p class="h3">You have no Equipments</p>
+            {% endif %}
+
+
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © LeaseKenya.com 2023</span>
+                </div>
+            </footer>
+        </div>
+        <!-- partial -->
+    </div>
+</div>
+<script>
+    function getDataFromForm() {
+  const name = document.getElementById('name').value;
+  const type = document.getElementById('exampleDataList').value;
+  const location = document.getElementById('Location').value;
+  const rates = document.getElementById('inputAddress2').value;
+  const condition = document.querySelector('[name="condition"]').value;
+  const fileInput = document.getElementById('formFile');
+  const imageFile = fileInput.files[0];
+
+  // You can now use these variables as needed, for example, log them to the console
+  console.log('Name:', name);
+  console.log('Type:', type);
+  console.log('Location:', location);
+  console.log('Rental Rates:', rates);
+  console.log('Condition:', condition);
+  console.log('Image File:', imageFile);
+}
+
+</script>
+{% endblock %}
+
+

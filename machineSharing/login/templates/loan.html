@@ -1,0 +1,63 @@
+{% extends 'base1.html'  %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="main-panel">
+    <div class="container">
+        <br/>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <i class="mdi mdi-currency-usd"></i>
+    </span> Rent
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <p class="h3">Choose the equipment you want</p>
+        {% if equipments %}
+        {% for eq in equipments %}
+        {% if eq.available %}
+        <div class="col-md-4 stretch-card grid-margin">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ eq.img.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ eq.name }}</h5>
+                    <p class="card-text">{{ eq.Desc }}</p>
+                    <a href="{% url 'rent' eq.id %}" class="btn btn-danger">Rent now</a>
+
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+         {% endif %}
+
+        {% endfor %}
+        {% else%}
+        <p class="h3">You have no Equipments</p>
+        {% endif %}
+    </div>
+
+
+    {% endblock %}

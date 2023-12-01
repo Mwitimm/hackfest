@@ -1,0 +1,248 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>G4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="header__nav w-120">
+                <div class="header__logo">
+                    
+                    <img src="{% static 'assets/img/logo.jpg' %}" style="border-radius: 50%;height: 70px;width: 70px;" alt="Logo">
+                </div>
+                <div class="header__nav__content">
+                    <div class="nav-close-icon"></div>
+                    <ul class="header__menu">
+                        <li class="menu__item">
+                            <a href="#" class="menu__link active">Home</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Product</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Team</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Blog</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__signup">
+                        <a href="{% url 'register' %}" class="btn btn__signup">
+                            <i class="fas fa-user-plus"></i> Sign Up
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hamburger-menu-wrap">
+                    <div class="hamburger-menu">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero w-120">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title">A New Way to Invest in Agriculture</h1>
+                    <p class="hero__description">
+                        Experience an innovative avenue for agricultural investment with a unique focus on leasing farming materials. Our platform empowers investors to participate in the growth of sustainable farming ventures by providing access to leased equipment, fostering efficiency, and 
+                        supporting farmers in optimizing their operations for mutual success
+                    </p>
+                    <a href="{% url 'register' %}"  class="btn btn__hero">Lease Now</a>
+                </div>
+                <div class="hero__img">
+                    <img src=" {% static 'assets/img/hero.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="opportunities">
+            <div class="opportunities__img">
+                <img src="{% static 'assets/img/leaf.png' %}" alt="">
+            </div>
+            <div class="opportunities__content w-105">
+                <div class="opportunities__head">
+                    <h2 class="opportunities__title">New Opportunities</h2>
+                    <p class="opportunities__description">Unlock a realm of new opportunities through our investment platform, offering diverse avenues for growth and prosperity. Explore innovative projects, technologies, and markets that redefine traditional boundaries, providing investors with the chance to engage in transformative 
+                        ventures and capitalize on emerging trends.</p>
+                </div>
+                <div class="opportunities__body">
+                    <div class="opportunity">
+                        <img src="{% static 'assets/img/opportunites/opportunity-1.svg' %}" alt="Icon" class="opportunity__icon">
+                        <h4 class="opportunity__title">Connect with our farmers</h4>
+                        <p class="opportunity__description">Empower sustainable farming practices while enjoying lucrative returns in a collaborative partnership. 
+                            Redefine agribusiness with streamlined, efficient solutions for mutual prosperity.
+                        </p>
+                    </div>
+
+                    <div class="opportunity active">
+                        <img src="{% static 'assets/img/opportunites/opportunity-2.svg' %}" alt="Icon" class="opportunity__icon">
+                        <h4 class="opportunity__title">Grow your business</h4>
+                        <p class="opportunity__description">
+                            Elevate your business to new heights by leveraging our platform's strategic opportunities. From innovative investments to tailored solutions, unlock growth and success in a dynamic 
+                            marketplace that caters to your business aspirations.
+                        </p>
+                    </div>
+                    <div class="opportunity">
+                        <img src="{% static 'assets/img/opportunites/opportunity-3.svg' %}" alt="Icon" class="opportunity__icon">
+                        <h4 class="opportunity__title">Social Impact Invesment
+                        </h4>
+                        <p class="opportunity__description">
+                            Embrace social impact investing to address global food security
+                             challenges through our platform. Your investment not only yields financial returns but also contributes directly to sustainable agricultural practices, fostering resilience and ensuring a positive social 
+                            impact on communities worldwide
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="invest  w-105">
+            <div class="invest__content">
+                <div class="invest__head">
+                    <h2 class="invest__title">Lease on your convenience</h2>
+                    <p class="invest__description">Experience hassle-free leasing with our convenient terms. Tailor your agreements to suit your schedule and needs, ensuring a flexible and efficient 
+                        process for leasing that adapts to your convenience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-is-works w-120">
+            <div class="works__content">
+                <div class="works__head">
+                    <h2 class="works__title">How it works</h2>
+                    <p class="works__description">
+                        Farm machinery leasing systems offer a flexible and cost-effective solution for farmers to access modern equipment, improve productivity, and manage operational expenses efficiently. It allows farmers to stay technologically competitive without the 
+                        significant upfront investment required for equipment ownership
+                    </p>
+                </div>
+                <div class="works__body">
+                    <ul class="form_progressbar">
+                        <li class="progressbar__step active" data-step="1">01</li>
+                        <li class="progressbar__step" data-step="2">02</li>
+                        <li class="progressbar__step" data-step="3">03</li>
+                        <li class="progressbar__step" data-step="4">04</li>
+                    </ul>
+                </div>
+                <div class="works__footer">
+                    <div class="works__step__content first_step">
+                        <p class="works__step_title"> lease your farm machinery and  promote productivity</p>
+                    </div>
+                    <div class="works__step__content">
+                        <p class="works__step_description">
+                            Embrace the leasing model and let your business thrive without swallowing your budget, offering a cost-effective 
+                            way to access essential assets while preserving financial flexibility
+                        </p>
+                    </div>
+                    <div class="works__step__content">
+                        <p class="works__step_description">        
+                "Leasing: the cosmic solution for farmers —gobble up operational efficiency without
+                   swallowing your entire financial galaxy.
+                        </p>
+                    </div>
+                    <div class="works__step__content">
+                        <p class="works__step_description">
+                           Farm machinery leasing systems offer a flexible and cost-effective solution for farmers to access modern equipment, improve productivity, and manage operational expenses efficiently. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="farm-invest w-105">
+            <h2 class="farm-invest__title">The future of <span>Agriculture</span> is leasekenya</h2>
+            <a href="#" class="btn btn__farm--invest">Lease Now</a>
+
+        </section>
+
+        <footer class="footer">
+            <div class="footer__body w-105">
+                <nav class="footer__nav">
+                    <ul class="footer_nav__menu">
+                        <li class="footer_nav__item">
+                            <h4 class="footer_nav__menu__title">COMPANY</h4>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">About Us</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Team</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Careers</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="footer_nav__menu">
+                        <li class="footer_nav__item">
+                            <h4 class="footer_nav__menu__title">INVEST</h4>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Features</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">How it works</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Pricing</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Login</a>
+                        </li>
+                    </ul>
+                    <ul class="footer_nav__menu">
+                        <li class="footer_nav__item">
+                            <h4 class="footer_nav__menu__title">LEGAL</h4>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Privacy</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Terms</a>
+                        </li>
+                        <li class="footer_nav__item">
+                            <a href="#" class="footer_nav__link">Security</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="footer__contact">
+                    <h5 class="footer__contact__title">Blog leasekenya</h5>
+                    <span>Write email to us</span>
+                    <a href="mailto:info@lendkenya.com" class="email">info@leasekenya.com</a>
+                    <a href="login.html" class="btn btn__signin">
+                        <i class="far fa-user"></i> Sign In
+                    </a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__bottom__content w-105">
+                    <div class="footer__logo">
+                        <img src="{% static 'assets/img/logo.jpg' %}" style="border-radius: 50%; height: 70px;width: 70px;" alt="Logo">
+                    </div>
+                    <p class="footer_copyright">
+                        © Copyright 2023. Machakos - Wote Road.
+                    </p>
+                </div>
+                <img src="{% static 'assets/img/mountain.png'%}" alt="Mountain" class="footer_img">
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'assets/js/main.js'%}" type="module"></script>
+
+</body>
+

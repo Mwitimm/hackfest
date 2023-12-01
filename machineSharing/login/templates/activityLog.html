@@ -1,0 +1,70 @@
+{% extends 'base1.html'  %}
+{% load static %}
+
+{% block content %}
+<div class="main-panel">
+      <div class="container">
+    <br/>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+  </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <i class="mdi mdi-history"></i>
+    </span> Activity Logs
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if logs %}
+            {% for log in logs %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th> <!-- Use forloop.counter for the index -->
+                <td>{{ log.timestamp }}</td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.details }}</td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <p class="h3">No Activity logs found!</p>
+
+            {% endif %}
+
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{%endblock %}
+
+
+
